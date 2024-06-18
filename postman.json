@@ -1,0 +1,356 @@
+{
+    "info": {
+        "_postman_id": "1d80a24a-56c4-4538-84d2-7bc0467502e4",
+        "name": "Chat Application API",
+        "description": "API collection for Chat Application",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "_exporter_id": "32674627",
+        "_collection_link": "https://lively-astronaut-958959.postman.co/workspace/My-Workspace~d5ef1136-33ae-41fa-84d0-a9e1ffda2f34/collection/32674627-1d80a24a-56c4-4538-84d2-7bc0467502e4?action=share&source=collection_link&creator=32674627"
+    },
+    "item": [
+        {
+            "name": "Register",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"name\": \"Bintang Tobing\",\n    \"username\": \"testuser\",\n    \"email\": \"testuser@example.com\",\n    \"password\": \"password\",\n    \"password_confirmation\": \"password\"\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:8000/api/register",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "api",
+                        "register"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Login",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"email\": \"testuser@example.com\",\n    \"password\": \"password\"\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:8000/api/login",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "api",
+                        "login"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Logout",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer <your_token>"
+                    }
+                ],
+                "url": {
+                    "raw": "http://localhost:8000/api/logout",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "api",
+                        "logout"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Get Authenticated User",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer <your_token>"
+                    }
+                ],
+                "url": {
+                    "raw": "http://localhost:8000/api/user",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "api",
+                        "user"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "List Chat Rooms",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer <your_token>"
+                    }
+                ],
+                "url": {
+                    "raw": "http://localhost:8000/api/chat-rooms",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "api",
+                        "chat-rooms"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Create Chat Room",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer <your_token>"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"name\": \"General\"\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:8000/api/chat-rooms",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "api",
+                        "chat-rooms"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Get Chat Room Details",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer <your_token>"
+                    }
+                ],
+                "url": {
+                    "raw": "http://localhost:8000/api/chat-rooms/{id}",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "api",
+                        "chat-rooms",
+                        "{id}"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Send Message",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer <your_token>"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"chat_room_id\": 1,\n    \"content\": \"Hello, everyone!\"\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:8000/api/messages",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "api",
+                        "messages"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Get Messages in Chat Room",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer <your_token>"
+                    }
+                ],
+                "url": {
+                    "raw": "http://localhost:8000/api/chat-rooms/{id}/messages",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "api",
+                        "chat-rooms",
+                        "{id}",
+                        "messages"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Redirect to Google",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:8000/auth/google",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "auth",
+                        "google"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Handle Google Callback",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:8000/auth/google/callback",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "auth",
+                        "google",
+                        "callback"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Redirect to Facebook",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:8000/auth/facebook",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "auth",
+                        "facebook"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Handle Facebook Callback",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:8000/auth/facebook/callback",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "auth",
+                        "facebook",
+                        "callback"
+                    ]
+                }
+            },
+            "response": []
+        }
+    ],
+    "variable": [
+        {
+            "key": "yourToken",
+            "value": "<your_token>"
+        }
+    ]
+}

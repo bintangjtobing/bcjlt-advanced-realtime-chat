@@ -1,0 +1,595 @@
+{
+    "info": {
+        "_postman_id": "21184ef1-64aa-4d55-bea9-74d6f1b53ad5",
+        "name": "Chat Application API",
+        "description": "API collection for Chat Application. This API collection is created for an exam at Duhani Capital for the role of Website Manager.",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "_exporter_id": "32442929",
+        "_collection_link": "https://boxity-central.postman.co/workspace/Boxity-Central-ID-Workspace~d6c14dd3-6b56-416d-899c-93ecc19b7548/collection/32442929-21184ef1-64aa-4d55-bea9-74d6f1b53ad5?action=share&source=collection_link&creator=32442929"
+    },
+    "item": [
+        {
+            "name": "Authentication",
+            "description": "Endpoints for user registration, login, logout, and retrieving authenticated user details.",
+            "item": [
+                {
+                    "name": "Register",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"Ayu\",\n    \"username\": \"ayu\",\n    \"email\": \"ayu@example.com\",\n    \"password\": \"password\",\n    \"password_confirmation\": \"password\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{url}}/register",
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "register"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Login",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"email\": \"ayu@example.com\",\n    \"password\": \"password\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{url}}/login",
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "login"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Logout",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{bearer_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer <your_token>"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{url}}/logout",
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "logout"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Authenticated User",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{bearer_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{url}}/user",
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "user"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Chat Room",
+            "description": "Endpoints for managing chat rooms including listing chat rooms, creating a new chat room, getting details of a chat room, inviting users, and sending/receiving messages within a chat room.",
+            "item": [
+                {
+                    "name": "List Chat Rooms",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{bearer_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer <your_token>"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{url}}/chat-rooms",
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "chat-rooms"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Invite User to Chat Room",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{bearer_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer <your_token>"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"user_id\": 1\n}"
+                        },
+                        "url": {
+                            "raw": "{{url}}/chat-rooms/{{idChatRoom}}/invite",
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "chat-rooms",
+                                "{{idChatRoom}}",
+                                "invite"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create Chat Room",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{bearer_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer <your_token>"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"General\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{url}}/chat-rooms",
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "chat-rooms"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Chat Room Details",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{bearer_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer <your_token>"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{url}}/chat-rooms/{{idChatRoom}}",
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "chat-rooms",
+                                "{{idChatRoom}}"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Send Message in Chat Room",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{bearer_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer <your_token>"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"chat_room_id\": 1,\n    \"content\": \"Hello, everyone!\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{url}}/messages",
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "messages"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Messages in Chat Room",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{bearer_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer <your_token>"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{url}}/chat-rooms/{{idChatRoom}}/messages",
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "chat-rooms",
+                                "{{idChatRoom}}",
+                                "messages"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Private Message",
+            "item": [
+                {
+                    "name": "Get Private Messages",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{bearer_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer <your_token>"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{url}}/private-messages",
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "private-messages"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Send Private Message",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{bearer_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer <your_token>"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"receiver_id\": 2,\n    \"content\": \"Hello, how are you?\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{url}}/private-messages",
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "private-messages"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Redirect to Google",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                        {
+                            "key": "token",
+                            "value": "{{bearer_token}}",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:8000/auth/google",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "auth",
+                        "google"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Handle Google Callback",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                        {
+                            "key": "token",
+                            "value": "{{bearer_token}}",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:8000/auth/google/callback",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "auth",
+                        "google",
+                        "callback"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Redirect to Facebook",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                        {
+                            "key": "token",
+                            "value": "{{bearer_token}}",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:8000/auth/facebook",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "auth",
+                        "facebook"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Handle Facebook Callback",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                        {
+                            "key": "token",
+                            "value": "{{bearer_token}}",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:8000/auth/facebook/callback",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "auth",
+                        "facebook",
+                        "callback"
+                    ]
+                }
+            },
+            "response": []
+        }
+    ],
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                    ""
+                ]
+            }
+        },
+        {
+            "listen": "test",
+            "script": {
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                    ""
+                ]
+            }
+        }
+    ],
+    "variable": [
+        {
+            "key": "bearer_token",
+            "value": "4|FjAOdJCs4OECpH6cNjCLvTSz4TdZYoOEK5Hv1MK9f6c4fba6"
+        },
+        {
+            "key": "idChatRoom",
+            "value": "1"
+        },
+        {
+            "key": "url",
+            "value": "http://localhost:8000/api"
+        }
+    ]
+}
