@@ -1,66 +1,161 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Chat Application API
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This is a Chat Application API built using Laravel Sanctum for authentication. The application allows users to register, login, create chat rooms, send messages, and communicate with friends. Additionally, it supports third-party authentication via Google and Facebook.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- User registration and authentication
+- Third-party authentication (Google, Facebook)
+- Create and manage chat rooms
+- Send and receive messages in chat rooms
+- Send and receive private messages
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Installation
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+1. **Clone the repository**
 
-## Learning Laravel
+    ```sh
+    git clone https://github.com/yourusername/chat-application-api.git
+    cd chat-application-api
+    ```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+2. **Install dependencies**
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+    ```sh
+    composer install
+    npm install
+    npm run dev
+    ```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+3. **Set up environment variables**
 
-## Laravel Sponsors
+    Rename `.env.example` to `.env` and update the necessary configurations:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+    ```sh
+    cp .env.example .env
+    php artisan key:generate
+    ```
 
-### Premium Partners
+4. **Run migrations**
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+    ```sh
+    php artisan migrate
+    ```
 
-## Contributing
+5. **Run the application**
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+    ```sh
+    php artisan serve
+    ```
 
-## Code of Conduct
+## API Documentation
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+The API documentation is provided in a Postman collection. You can import the collection from the following link:
 
-## Security Vulnerabilities
+[Chat Application API Postman Collection](https://boxity-central.postman.co/workspace/Boxity-Central-ID-Workspace~d6c14dd3-6b56-416d-899c-93ecc19b7548/collection/32442929-21184ef1-64aa-4d55-bea9-74d6f1b53ad5?action=share&source=collection_link&creator=32442929)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Authentication
 
-## License
+- **Register**: `POST /register`
+- **Login**: `POST /login`
+- **Logout**: `POST /logout`
+- **Get Authenticated User**: `GET /user`
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Chat Room
+
+- **List Chat Rooms**: `GET /chat-rooms`
+- **Create Chat Room**: `POST /chat-rooms`
+- **Get Chat Room Details**: `GET /chat-rooms/{idChatRoom}`
+- **Send Message in Chat Room**: `POST /messages`
+- **Get Messages in Chat Room**: `GET /chat-rooms/{idChatRoom}/messages`
+
+### Private Messages
+
+- **Get Private Messages**: `GET /private-messages`
+- **Send Private Message**: `POST /private-messages`
+
+### Third-Party Authentication
+
+- **Redirect to Google**: `GET /auth/google`
+- **Handle Google Callback**: `GET /auth/google/callback`
+- **Redirect to Facebook**: `GET /auth/facebook`
+- **Handle Facebook Callback**: `GET /auth/facebook/callback`
+
+## Database Schema
+
+The database schema consists of the following tables:
+
+- `users`
+- `password_resets`
+- `personal_access_tokens`
+- `messages`
+- `chat_rooms`
+- `chat_room_user`
+
+Refer to the migrations files for detailed schema definitions.
+
+## ERD (Entity Relationship Diagram)
+
+```mermaid
+erDiagram
+    USERS ||--o{ MESSAGES : "has many"
+    USERS ||--o{ PERSONAL_ACCESS_TOKENS : "has many"
+    MESSAGES }o--|| USERS : "belongs to"
+    MESSAGES }o--|| CHAT_ROOMS : "belongs to"
+    CHAT_ROOMS ||--o{ MESSAGES : "has many"
+    CHAT_ROOMS ||--o{ CHAT_ROOM_USER : "has many"
+    USERS ||--o{ CHAT_ROOM_USER : "has many"
+
+    USERS {
+        int id PK
+        string name
+        string username
+        string email
+        timestamp email_verified_at
+        string password
+        string remember_token
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    PASSWORD_RESETS {
+        string email
+        string token
+        timestamp created_at
+    }
+
+    PERSONAL_ACCESS_TOKENS {
+        int id PK
+        string tokenable_type
+        int tokenable_id
+        string name
+        string token
+        text abilities
+        timestamp last_used_at
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    MESSAGES {
+        int id PK
+        int user_id FK
+        int chat_room_id FK
+        text body
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    CHAT_ROOMS {
+        int id PK
+        string name
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    CHAT_ROOM_USER {
+        int id PK
+        int chat_room_id FK
+        int user_id FK
+        timestamp created_at
+        timestamp updated_at
+    }
