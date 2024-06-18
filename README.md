@@ -23,8 +23,6 @@ This is a Chat Application API built using Laravel Sanctum for authentication. T
 
     ```sh
     composer install
-    npm install
-    npm run dev
     ```
 
 3. **Set up environment variables**
@@ -52,7 +50,7 @@ This is a Chat Application API built using Laravel Sanctum for authentication. T
 
 The API documentation is provided in a Postman collection. You can import the collection from the following link:
 
-[Chat Application API Postman Collection](https://boxity-central.postman.co/workspace/Boxity-Central-ID-Workspace~d6c14dd3-6b56-416d-899c-93ecc19b7548/collection/32442929-21184ef1-64aa-4d55-bea9-74d6f1b53ad5?action=share&source=collection_link&creator=32442929)
+[Chat Application API Postman Collection](https://documenter.getpostman.com/view/32442929/2sA3XSB1LA)
 
 ### Authentication
 
